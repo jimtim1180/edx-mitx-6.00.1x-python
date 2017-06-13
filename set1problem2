@@ -1,0 +1,13 @@
+numbob=0
+"""
+for j in s:
+    print(j)
+for k in range(len(s)-1):
+    print(s[k+1])
+   """ 
+for i in range(len(s)-2):
+    #print(i)
+    if s[i]=='b' and s[i+1]=='o' and s[i+2]=='b':
+        numbob+=1
+       # print(str(numbob))
+print('Number of times bob occurs is: '+str(numbob))

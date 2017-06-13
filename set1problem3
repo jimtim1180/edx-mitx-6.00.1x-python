@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun 13 23:57:32 2017
+
+@author: N2016
+"""
+
+s='azcbobobegghakl'
+longestss=''
+longtemp=''
+for i in range(len(s)-1):
+    print(s[i])
+    if s[i]<=s[i+1]:
+        longtemp=longtemp+s[i]
+        for j in range(len(longtemp)-1):
+            if longtemp[j]<=longtemp[j+1]:
+                longestss=longestss+longtemp[j]
+print(longtemp)
+print('Longest substring in alphabetical order is: '+longestss)

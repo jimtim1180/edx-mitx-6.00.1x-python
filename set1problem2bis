@@ -1,0 +1,8 @@
+count=0
+for letter in range(0,len(s)-2):
+    #print(s[letter])
+    if s[letter]=='b':
+        if s[letter+1]=='o':
+            if s[letter+2]=='b':
+                count+=1
+print('Number of times bob occurs is: ' + str(count))

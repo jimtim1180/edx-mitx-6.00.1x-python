@@ -1,0 +1,37 @@
+"""MITx: 6.00.1x Introduction to Computer Science and Programming Using Python
+Course   Week 2: Simple Programs   3. Simple Algorithms (TIME: 41:06)   Exercise: guess my number"""
+print('Please think of a number between 0 and 100!')
+a=0
+b=100
+guess=50
+
+print('Is your secret number '+str(guess)+'?')
+
+message="Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly."
+print(message,end='')
+indication=input('')
+
+while indication!='c':
+  if indication=='h':
+    b=guess
+    guess=(a+guess)/2
+    guess=int(guess)
+    print('Is your secret number '+str(guess)+'?')
+    print(message,end='')
+    indication=input('')
+    
+  elif indication=='l':
+    a=guess
+    guess=(b+guess)/2
+    guess=int(guess)
+
+    print('Is your secret number '+str(guess)+'?')
+    print(message,end='')
+    indication=input('')
+  else:
+    print('Sorry, I did not understand your input.')
+    print('Is your secret number '+str(guess)+'?')
+    print(message,end='')
+    indication=input('')
+print("Game over. Your secret number was: "+str(round(guess)))
+

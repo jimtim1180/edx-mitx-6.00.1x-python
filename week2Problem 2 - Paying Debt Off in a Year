@@ -1,0 +1,12 @@
+
+monthlyInterestRate=annualInterestRate/12.0
+b=balance
+minimumFixP=10
+while b>=0:
+  b=balance
+  for i in range(12):
+    monthlyUnpaidB=b-minimumFixP
+    b=monthlyUnpaidB*(1+monthlyInterestRate)
+    monthlyUnpaidB=b-minimumFixP
+  minimumFixP+=10
+print("Lowest Payment: "+str(minimumFixP-10))

@@ -1,0 +1,106 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Oct  3 00:38:00 2017
+
+@author: N2016
+"""
+
+def isWordGuessed(secretWord, lettersGuessed):
+    '''
+    secretWord: string, the word the user is guessing
+    lettersGuessed: list, what letters have been guessed so far
+    returns: boolean, True if all the letters of secretWord are in lettersGuessed;
+      False otherwise
+    '''
+    i=0
+    for letter in secretWord:
+        if letter in lettersGuessed:
+            i+=1
+    if i==len(secretWord):
+        return True
+    else:
+        return False
+    
+def getGuessedWord(secretWord, lettersGuessed):
+    '''
+    secretWord: string, the word the user is guessing
+    lettersGuessed: list, what letters have been guessed so far
+    returns: string, comprised of letters and underscores that represents
+      what letters in secretWord have been guessed so far.
+    '''
+    guess=''
+    for letter in secretWord:
+        if letter in lettersGuessed:
+            guess+=str(letter)
+        else:
+            guess+=('_ ')
+    if guess[-1]==' ':
+        guess=guess[:-1]
+    return guess
+
+
+def getAvailableLetters(lettersGuessed):
+    '''
+    lettersGuessed: list, what letters have been guessed so far
+    returns: string, comprised of letters that represents what letters have not
+      yet been guessed.
+    '''
+    import string
+    guess=string.ascii_lowercase
+    for letter in lettersGuessed:
+        if letter in guess:
+            a=guess[:guess.index(letter)]
+            b=guess[guess.index(letter)+1:]
+            guess=a+b
+    return guess
+
+def hangman(secretWord):
+    '''
+    secretWord: string, the secret word to guess.
+
+    Starts up an interactive game of Hangman.
+
+    * At the start of the game, let the user know how many 
+      letters the secretWord contains.
+
+    * Ask the user to supply one guess (i.e. letter) per round.
+
+    * The user should receive feedback immediately after each guess 
+      about whether their guess appears in the computers word.
+
+    * After each round, you should also display to the user the 
+      partially guessed word so far, as well as letters that the 
+      user has not yet guessed.
+
+    Follows the other limitations detailed in the problem write-up.
+    '''
+    guessnumber=8
+    print('Welcome to the game, Hangman!')
+    print('I am thinking of a word that is '+str(len(secretWord))+' letters long.')
+    lettersGuessed=[]
+
+    while guessnumber>0:
+        print('-----------')
+        availableLetters=getAvailableLetters(lettersGuessed)
+        print('You have '+str(guessnumber)+' guesses left.')
+        print('Available letters: '+availableLetters)
+        guess=input('Please guess a letter: ')
+        guess=guess.lower()
+        lettersGuessed.append(guess)
+        if guess not in availableLetters:
+            print("Oops! You've already guessed that letter: "+getGuessedWord(secretWord, lettersGuessed))
+            guessnumber+=1
+        if guess in availableLetters:
+            if guess in secretWord:
+                print('Good guess: '+getGuessedWord(secretWord, lettersGuessed))
+                guessnumber+=1
+            if (guess in secretWord)==False:
+                print('Oops! That letter is not in my word: '+getGuessedWord(secretWord, lettersGuessed))
+            if isWordGuessed(secretWord, lettersGuessed)==True:
+                print('-----------')
+                print('Congratulations, you won!')
+                break
+        guessnumber-=1
+    if guessnumber==0:
+        print('-----------')
+        print('Sorry, you ran out of guesses. The word was '+secretWord+'.')

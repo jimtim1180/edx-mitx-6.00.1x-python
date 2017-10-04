@@ -1,0 +1,10 @@
+def keysWithValue(aDict, target):
+    '''
+    aDict: a dictionary
+    target: an integer
+    '''
+    getlist=[]
+    for key in aDict.keys():
+        if aDict[key]==target:
+            getlist.append(key)
+    return getlist

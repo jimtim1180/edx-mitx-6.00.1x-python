@@ -1,0 +1,10 @@
+def getSublists(L, n):
+    newlist=[]
+    for i in range(len(L)-n+1):
+        sublist=[]
+        for j in range(n):
+            sublist.append(L[i+j])
+        newlist+=[sublist]
+    return newlist
+    
+    #12/15 points

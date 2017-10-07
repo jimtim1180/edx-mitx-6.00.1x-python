@@ -1,0 +1,16 @@
+s=s+'9'
+longest=''
+count=0
+for index in range(len(s)-1):
+    i=0
+    longest_temp=s[index]
+    while s[index+i+1]>=s[index+i]:
+        longest_temp+=s[index+i+1]
+        i+=1
+        if len(longest_temp)>count:
+            longest=longest_temp
+            count=len(longest_temp)
+    if len(longest_temp)>count:
+        longest=longest_temp
+        count=len(longest_temp)
+print('Longest substring in alphabetical order is: ' + longest)

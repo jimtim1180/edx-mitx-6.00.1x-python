@@ -1,0 +1,23 @@
+"""
+NOT A BISSECTION!
+TO REWORK
+"""
+
+monthlyRate=annualInterestRate/12.0
+b=balance
+lowerb=balance/12
+upperb=(balance*(1+monthlyRate)**12)/12.0
+minimumFixP=(lowerb+upperb)/2
+
+while abs(b)>=1:
+    b=balance
+    for i in range(12):
+        monthlyUnpaidB=b-minimumFixP
+        b=monthlyUnpaidB*(1+monthlyRate)
+    if b>0:
+        ans=minimumFixP
+        minimumFixP+=.1
+    if b<0:
+        ans=minimumFixP
+        minimumFixP-=.1
+print("Lowest Payment: "+str(round(ans,2)))
